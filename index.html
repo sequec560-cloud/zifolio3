@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-AO">
 <head>
@@ -18,7 +19,7 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
         .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
         .bento-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .bento-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1); }
+        .bento-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08); }
         
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -28,6 +29,8 @@
 
         #root:empty { display: flex; align-items: center; justify-content: center; min-height: 100vh; font-weight: 800; color: #2563eb; }
         #root:empty::after { content: "ZIFOLIO"; letter-spacing: 0.1em; }
+        
+        .soft-shadow { box-shadow: 0 10px 30px -10px rgba(0,0,0,0.04); }
     </style>
 
     <script type="importmap">

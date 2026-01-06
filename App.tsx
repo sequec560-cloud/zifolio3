@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -10,7 +11,7 @@ import { SpecialOffer } from './components/SpecialOffer';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
 
-const App = () => {
+const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
