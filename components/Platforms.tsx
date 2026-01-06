@@ -6,19 +6,19 @@ export const Platforms: React.FC = () => {
     { 
       name: "Binance", 
       src: "https://cryptologos.cc/logos/binance-coin-bnb-logo.png?v=040", 
-      desc: "Comprar, guardar e investir",
+      desc: "Comprar, guardar e investir em dólares digitais (USDT).",
       link: "https://www.binance.com/activity/referral-entry/CPA?ref=CPA_004HP7KLU9"
     },
     { 
       name: "RedotPay", 
       src: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/44/14/66/44146607-4e6f-7988-874e-6e27339890f5/AppIcon-0-0-1x_U007emarketing-0-7-0-sRGB-85-220.png/512x512bb.jpg", 
-      desc: "Pagamentos digitais",
+      desc: "Cartão VISA digital para pagamentos em Angola e compras online.",
       link: "https://url.hk/i/pt/z68kp"
     },
     { 
       name: "FaucetPay", 
       src: "https://faucetpay.io/assets/img/icon.png", 
-      desc: "Ganhos iniciais",
+      desc: "Micro-carteira ideal para começar a ganhar cripto do zero.",
       link: "https://faucetpay.io/?r=3535317"
     }
   ];
@@ -26,19 +26,25 @@ export const Platforms: React.FC = () => {
   const whatsappLink = "https://chat.whatsapp.com/BVQl36gWjIoJj7xTtVkp5S";
 
   return (
-    <section className="py-24 bg-slate-900 text-white rounded-[4rem] mx-4 md:mx-6 overflow-hidden px-6">
+    <section id="plataformas" className="py-24 bg-slate-900 text-white rounded-[4rem] mx-4 md:mx-6 overflow-hidden px-6 my-12">
       <div className="max-w-4xl mx-auto text-center">
         <div className="mb-16">
           <span className="text-blue-500 font-black tracking-[0.3em] uppercase text-xs mb-4 block">Ecosistema</span>
           <h3 className="text-3xl md:text-4xl font-black mb-4">Plataformas Recomendadas</h3>
           <p className="text-slate-400 text-lg max-w-xl mx-auto">
-            Testadas e aprovadas por nós. São as ferramentas ideais para começares o teu percurso financeiro em Angola.
+            Testadas e aprovadas por nós. São as ferramentas essenciais para o teu percurso financeiro.
           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center mb-16">
           {platforms.map((p, i) => (
-            <a key={i} href={p.link} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center group cursor-pointer">
+            <a 
+              key={i} 
+              href={p.link} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex flex-col items-center group cursor-pointer transition-all hover:-translate-y-2"
+            >
               <div className="h-28 w-28 flex items-center justify-center mb-6 relative">
                 <div className="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-600/20 rounded-3xl blur-2xl transition-all duration-500 scale-150"></div>
                 

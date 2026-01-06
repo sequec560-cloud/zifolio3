@@ -35,13 +35,16 @@ export const ChatBot: React.FC = () => {
           O teu tom deve ser caloroso, encorajador e acolhedor. 
           Usa expressões angolanas amigáveis (ex: "estamos juntos", "força aí", "mambo"). 
           Explica as coisas como se estivesses a falar com um irmão/irmã mais novo. 
-          Foca na segurança e no passo a passo. 
+          Foca na segurança e no passo a passo para quem está em Angola. 
           Se a dúvida for muito complexa, diz: "Isto é importante demais para uma resposta automática, fala com a nossa equipa humana no WhatsApp para termos a certeza que fazes tudo certo!"`
         },
       });
 
-      setMessages(prev => [...prev, { role: 'bot', text: response.text || 'Não consegui captar, mas podemos conversar melhor no WhatsApp!' }]);
+      // Using .text property as per guidelines
+      const botResponse = response.text || 'Não consegui processar isso agora, mas podemos conversar melhor no WhatsApp!';
+      setMessages(prev => [...prev, { role: 'bot', text: botResponse }]);
     } catch (error) {
+      console.error("Gemini Error:", error);
       setMessages(prev => [...prev, { role: 'bot', text: 'Parece que houve um soluço na rede. Queres tentar novamente ou falar connosco no WhatsApp?' }]);
     } finally {
       setLoading(false);
@@ -52,12 +55,12 @@ export const ChatBot: React.FC = () => {
     <div className="fixed bottom-6 right-6 z-[60]">
       {isOpen ? (
         <div className="bg-white w-[350px] sm:w-[400px] h-[550px] rounded-[2.5rem] shadow-2xl flex flex-col border border-slate-100 overflow-hidden animate-in slide-in-from-bottom-5">
-          <div className="p-6 bg-blue-600 text-white flex justify-between items-center">
+          <div className="p-6 bg-blue-600 text-white flex justify-between items-center shadow-lg">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-xl">🤝</div>
               <div>
                 <h4 className="font-bold text-sm">Apoio Zifolio</h4>
-                <p className="text-[10px] opacity-80 font-medium">Aqui para te ajudar</p>
+                <p className="text-[10px] opacity-80 font-medium tracking-wider">INTELIGÊNCIA ARTIFICIAL</p>
               </div>
             </div>
             <button onClick={() => setIsOpen(false)} className="hover:bg-black/10 p-2 rounded-full transition-colors">
@@ -65,13 +68,13 @@ export const ChatBot: React.FC = () => {
             </button>
           </div>
           
-          <div ref={scrollRef} className="flex-grow p-6 overflow-y-auto space-y-4 bg-white">
+          <div ref={scrollRef} className="flex-grow p-6 overflow-y-auto space-y-4 bg-slate-50">
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] p-4 rounded-3xl text-sm leading-relaxed ${
+                <div className={`max-w-[85%] p-4 rounded-3xl text-sm leading-relaxed shadow-sm ${
                   m.role === 'user' 
-                  ? 'bg-slate-900 text-white rounded-tr-none' 
-                  : 'bg-blue-50 text-blue-900 rounded-tl-none'
+                  ? 'bg-blue-600 text-white rounded-tr-none' 
+                  : 'bg-white text-slate-700 rounded-tl-none border border-slate-100'
                 }`}>
                   {m.text}
                 </div>
@@ -79,26 +82,31 @@ export const ChatBot: React.FC = () => {
             ))}
             {loading && (
               <div className="flex justify-start">
-                <div className="bg-blue-50 p-4 rounded-3xl animate-pulse text-blue-600 text-xs font-bold">
+                <div className="bg-white p-4 rounded-3xl animate-pulse text-blue-600 text-xs font-bold border border-slate-100 flex items-center gap-2">
+                  <div className="flex gap-1">
+                    <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce"></div>
+                    <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce delay-75"></div>
+                    <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce delay-150"></div>
+                  </div>
                   A pensar...
                 </div>
               </div>
             )}
           </div>
           
-          <div className="p-6 bg-white border-t border-slate-50 flex gap-2">
+          <div className="p-6 bg-white border-t border-slate-100 flex gap-2">
             <input 
               type="text" 
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleSend()}
               placeholder="Escreve aqui a tua dúvida..."
-              className="flex-grow px-5 py-3 bg-slate-50 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all"
+              className="flex-grow px-5 py-3 bg-slate-50 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all border border-slate-100"
             />
             <button 
               onClick={handleSend}
               disabled={loading || !input.trim()}
-              className="p-3 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 disabled:opacity-50 transition-all btn-float"
+              className="p-3 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 disabled:opacity-50 transition-all shadow-lg active:scale-95"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
             </button>
@@ -107,7 +115,7 @@ export const ChatBot: React.FC = () => {
       ) : (
         <button 
           onClick={() => setIsOpen(true)}
-          className="w-16 h-16 bg-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center btn-float relative"
+          className="w-16 h-16 bg-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 active:scale-95 relative"
         >
           <span className="absolute -top-1 -right-1 flex h-4 w-4">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
