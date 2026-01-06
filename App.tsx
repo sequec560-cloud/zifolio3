@@ -10,7 +10,6 @@ import { Steps } from './components/Steps';
 import { SpecialOffer } from './components/SpecialOffer';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
-import { ChatBot } from './components/ChatBot';
 
 const App = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -37,7 +36,6 @@ const App = () => {
         <CTASection />
       </main>
       <Footer />
-      <ChatBot />
     </div>
   );
 };
