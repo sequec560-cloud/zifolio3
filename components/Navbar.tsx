@@ -16,8 +16,8 @@ export const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
           <span className="text-xl font-black text-slate-900 tracking-tighter">ZIFOLIO</span>
         </div>
         <a 
-          href="https://wa.me/244900000000" 
-          className="text-[10px] font-black text-white bg-slate-900 px-5 py-2.5 rounded-full hover:bg-slate-800 transition-all uppercase tracking-widest"
+          href="https://chat.whatsapp.com/BVQl36gWjIoJj7xTtVkp5S" 
+          className="text-[10px] font-black text-white bg-slate-900 px-5 py-2.5 rounded-full hover:bg-slate-800 transition-all uppercase tracking-widest shadow-lg shadow-slate-900/10"
         >
           WHATSAPP
         </a>
