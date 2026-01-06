@@ -1,16 +1,25 @@
-
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-
-const rootElement = document.getElementById('root');
-if (!rootElement) {
-  throw new Error("Could not find root element to mount to");
-}
-
-const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+export default {
+  async fetch(request: Request): Promise<Response> {
+    return new Response(
+      `
+      <!DOCTYPE html>
+      <html lang="pt">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Zifolio</title>
+      </head>
+      <body>
+        <h1>Zifolio</h1>
+        <p>Educação financeira simples para Angola.</p>
+      </body>
+      </html>
+      `,
+      {
+        headers: {
+          "Content-Type": "text/html; charset=UTF-8",
+        },
+      }
+    );
+  },
+};
