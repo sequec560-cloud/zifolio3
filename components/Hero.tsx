@@ -25,6 +25,8 @@ export const Hero: React.FC = () => {
         <div className="flex flex-col gap-4 justify-center items-center">
           <a 
             href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full sm:w-auto px-12 py-6 bg-blue-600 text-white rounded-[2rem] font-black text-xl hover:bg-blue-700 hover:scale-105 transition-all shadow-2xl shadow-blue-500/20 active:scale-95"
           >
             COMEÇAR AGORA NO WHATSAPP

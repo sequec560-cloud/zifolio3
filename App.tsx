@@ -1,98 +1,184 @@
 
 import React, { useState, useEffect } from 'react';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { Problems } from './components/Problems';
-import { Solution } from './components/Solution';
-import { Platforms } from './components/Platforms';
-import { SpecialOffer } from './components/SpecialOffer';
 import { ChatBot } from './components/ChatBot';
-import { Footer } from './components/Footer';
 
-const App: React.FC = () => {
+const ZIFOLIO_WHATSAPP = "https://chat.whatsapp.com/BVQl36gWjIoJj7xTtVkp5S";
+
+const App = () => {
   const [scrolled, setScrolled] = useState(false);
-  const whatsappLink = "https://chat.whatsapp.com/BVQl36gWjIoJj7xTtVkp5S";
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 30);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const affiliateLinks = [
+    {
+      name: "Binance",
+      description: "A maior corretora do mundo. Ideal para guardar e investir em dólares digitais (USDT).",
+      link: "https://www.binance.com/activity/referral-entry/CPA?ref=CPA_004HP7KLU9",
+      icon: "https://cryptologos.cc/logos/binance-coin-bnb-logo.png?v=040",
+      color: "bg-yellow-50"
+    },
+    {
+      name: "RedotPay",
+      description: "Cartão VISA digital que funciona em Angola. Paga Netflix, Spotify e compras online.",
+      link: "https://url.hk/i/pt/z68kp",
+      icon: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/44/14/66/44146607-4e6f-7988-874e-6e27339890f5/AppIcon-0-0-1x_U007emarketing-0-7-0-sRGB-85-220.png/512x512bb.jpg",
+      color: "bg-red-50"
+    },
+    {
+      name: "FaucetPay",
+      description: "Começa a ganhar pequenas frações de cripto grátis. Ideal para quem tem zero capital.",
+      link: "https://faucetpay.io/?r=3535317",
+      icon: "https://faucetpay.io/assets/img/icon.png",
+      color: "bg-blue-50"
+    }
+  ];
+
   return (
-    <div className="min-h-screen flex flex-col bg-white selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden">
-      <Navbar scrolled={scrolled} />
-      <main className="flex-grow">
-        <Hero />
-        
-        <Problems />
-
-        <Solution />
-
-        <Platforms />
-
-        <SpecialOffer />
-
-        {/* Section: Para quem é */}
-        <section className="py-20 px-6 bg-slate-50">
-          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
-            <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100">
-              <h3 className="text-2xl font-black text-slate-900 mb-6 flex items-center gap-2">
-                <span className="text-emerald-500">✔</span> Para quem é
-              </h3>
-              <ul className="space-y-4 text-slate-600 font-medium">
-                <li>• Iniciantes</li>
-                <li>• Quem quer começar com pouco</li>
-                <li>• Pessoas em Angola</li>
-                <li>• Quem quer aprender antes de investir</li>
-              </ul>
-            </div>
-            <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100">
-              <h3 className="text-2xl font-black text-slate-900 mb-6 flex items-center gap-2">
-                <span className="text-red-500">✘</span> Não é para quem...
-              </h3>
-              <ul className="space-y-4 text-slate-600 font-medium">
-                <li>• Procura dinheiro fácil</li>
-                <li>• Gosta de esquemas</li>
-                <li>• Não quer estudar o básico</li>
-              </ul>
-            </div>
+    <div className="min-h-screen bg-[#F8FAFC]">
+      {/* Navigation */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-nav border-b border-slate-100 py-3' : 'bg-transparent py-5'}`}>
+        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg shadow-blue-500/20">Z</div>
+            <span className="text-xl font-extrabold tracking-tight text-slate-900">ZIFOLIO</span>
           </div>
-        </section>
-        
-        {/* Final CTA */}
-        <section className="py-24 px-6 text-center">
-          <div className="max-w-2xl mx-auto">
-            <h2 className="text-4xl font-black text-slate-900 mb-6">Começa agora</h2>
-            <p className="text-lg text-slate-500 mb-10 leading-relaxed">
-              O primeiro passo é simples. Clica abaixo e fala connosco no WhatsApp.
-            </p>
-            <a 
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-4 w-full sm:w-auto justify-center px-12 py-6 bg-blue-600 text-white rounded-[2rem] font-black text-xl hover:bg-blue-700 transition-all shadow-2xl shadow-blue-500/20 active:scale-95"
-            >
-              COMEÇAR AGORA NO WHATSAPP
+          <div className="flex items-center gap-4">
+            <a href={ZIFOLIO_WHATSAPP} target="_blank" rel="noreferrer" className="hidden sm:block text-slate-600 hover:text-blue-600 font-bold text-sm transition-colors">
+              Comunidade
+            </a>
+            <a href={ZIFOLIO_WHATSAPP} target="_blank" rel="noreferrer" className="bg-slate-900 text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-all active:scale-95 shadow-lg shadow-slate-200">
+              Começar Grátis
             </a>
           </div>
-        </section>
-      </main>
+        </div>
+      </nav>
 
-      {/* Floating Action Button (Mobile First UX) */}
-      <a 
-        href={whatsappLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 left-6 z-50 p-4 bg-emerald-500 text-white rounded-full shadow-2xl hover:bg-emerald-600 transition-all active:scale-95 md:hidden"
-        aria-label="Falar no WhatsApp"
-      >
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-      </a>
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-6">
+        <div className="max-w-5xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-sm font-bold mb-8 animate-bounce">
+            <span>🇦🇴</span> Educação Financeira para Angola
+          </div>
+          <h1 className="text-5xl md:text-7xl font-[800] text-slate-900 leading-[1.1] tracking-tight mb-8">
+            Aprende a ganhar e <br />
+            <span className="text-blue-600">gerir o teu dinheiro.</span>
+          </h1>
+          <p className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-12 font-medium leading-relaxed">
+            Educação financeira simples e direta. Do zero aos primeiros ganhos digitais, sem promessas falsas.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <a href={ZIFOLIO_WHATSAPP} className="px-8 py-5 cta-gradient text-white rounded-2xl font-bold text-lg shadow-xl shadow-blue-500/30 hover:shadow-blue-500/40 transition-all active:scale-95">
+              Entrar na Comunidade WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
 
-      <Footer />
+      {/* Affiliate Platforms */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-2xl font-black text-slate-900 mb-2">Plataformas que Recomendamos</h2>
+            <p className="text-slate-500 font-medium">As ferramentas essenciais para a tua liberdade financeira e compras online.</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {affiliateLinks.map((p, i) => (
+              <a key={i} href={p.link} target="_blank" rel="noreferrer" className="bento-card group block p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all">
+                <div className={`w-16 h-16 ${p.color} rounded-2xl flex items-center justify-center mb-6 overflow-hidden p-3 shadow-inner`}>
+                  <img src={p.icon} alt={p.name} className="w-full h-full object-contain group-hover:scale-110 transition-transform" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
+                  {p.name}
+                  <svg className="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </h3>
+                <p className="text-slate-500 text-sm leading-relaxed font-medium">
+                  {p.description}
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Learning Bento */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-12 gap-6">
+            <div className="md:col-span-8 bg-blue-600 rounded-[3rem] p-10 text-white relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-white/20 transition-all"></div>
+              <h3 className="text-3xl font-black mb-4 relative z-10">O que vais aprender</h3>
+              <ul className="space-y-4 relative z-10">
+                <li className="flex items-center gap-3 font-bold text-blue-50">
+                  <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center text-[10px]">✓</div>
+                  Organização financeira básica e poupança
+                </li>
+                <li className="flex items-center gap-3 font-bold text-blue-50">
+                  <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center text-[10px]">✓</div>
+                  Como ganhar e guardar em Dólar através de Cripto
+                </li>
+                <li className="flex items-center gap-3 font-bold text-blue-50">
+                  <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center text-[10px]">✓</div>
+                  Pagamentos internacionais e cartões digitais
+                </li>
+              </ul>
+            </div>
+            <div className="md:col-span-4 bg-slate-900 rounded-[3rem] p-10 text-white flex flex-col justify-between">
+              <div>
+                <span className="text-blue-400 font-black text-xs uppercase tracking-widest mb-4 block">Mentoria</span>
+                <h3 className="text-2xl font-black mb-4 leading-tight">Precisas de ajuda direta?</h3>
+              </div>
+              <a href={ZIFOLIO_WHATSAPP} className="bg-white text-slate-900 w-full py-4 rounded-2xl font-black text-center hover:bg-blue-50 transition-colors">
+                Falar no WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-white py-16 px-6 border-t border-slate-100">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+            <div className="max-w-xs">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black">Z</div>
+                <span className="text-xl font-black text-slate-900 tracking-tighter">ZIFOLIO</span>
+              </div>
+              <p className="text-slate-400 text-sm font-medium leading-relaxed">
+                Transformando a educação financeira em algo simples para todos os angolanos.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-20">
+              <div>
+                <h4 className="text-slate-900 font-bold mb-4">Acesso</h4>
+                <ul className="space-y-2 text-sm font-medium text-slate-500">
+                  <li><a href={ZIFOLIO_WHATSAPP} className="hover:text-blue-600">Comunidade</a></li>
+                  <li><a href="#" className="hover:text-blue-600">Instagram</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-slate-900 font-bold mb-4">Informação</h4>
+                <ul className="space-y-2 text-sm font-medium text-slate-500">
+                  <li><a href="#" className="hover:text-blue-600">Sobre nós</a></li>
+                  <li><a href="#" className="hover:text-blue-600">Disclaimer</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="pt-8 border-t border-slate-50 text-center md:text-left">
+            <p className="text-slate-300 text-[10px] font-bold uppercase tracking-[0.2em]">
+              ZIFOLIO &copy; {new Date().getFullYear()} • UM PRODUTO DIBUCO BRAND • EDUCAÇÃO E TECNOLOGIA.
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      {/* Intelligent AI Assistant & Support */}
       <ChatBot />
     </div>
   );
