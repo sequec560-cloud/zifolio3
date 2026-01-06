@@ -4,58 +4,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zifolio - Educação Financeira Simples em Angola</title>
     
+    <!-- SEO Primário -->
+    <title>Zifolio — Educação Financeira Simples em Angola</title>
+    <meta name="title" content="Zifolio — Educação Financeira Simples em Angola">
+    <meta name="description" content="Aprende a organizar, ganhar e investir o teu dinheiro em Angola. O Zifolio simplifica as finanças digitais com Binance, RedotPay e FaucetPay. Começa hoje!">
+    <meta name="keywords" content="finanças angola, investimento angola, binance angola, redotpay angola, ganhar dolar angola, educação financeira angola, zifolio">
+    <meta name="author" content="Zifolio / Dibuco Brand">
+    <link rel="canonical" href="https://zifolio.org">
+
+    <!-- Open Graph / Facebook (Redes Sociais) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zifolio.org/">
+    <meta property="og:title" content="Zifolio — Educação Financeira Simples em Angola">
+    <meta property="og:description" content="Aprende a gerir e investir dinheiro sem complicações. Plataformas seguras e orientação prática para angolanos.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=1200&h=630&auto=format&fit=crop">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://zifolio.org/">
+    <meta property="twitter:title" content="Zifolio — Educação Financeira Simples em Angola">
+    <meta property="twitter:description" content="O guia prático para a tua liberdade financeira em Angola. Simples, direto e seguro.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=1200&h=630&auto=format&fit=crop">
+
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%232563eb%22/><text y=%22.9em%22 x=%2250%%22 text-anchor=%22middle%22 font-family=%22system-ui,sans-serif%22 font-weight=%22900%22 font-size=%2265%22 fill=%22white%22>Z</text></svg>">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fontes e Estilos Base -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e293b;
+        }
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             scroll-behavior: smooth;
             background-color: #ffffff;
             color: #0f172a;
+            -webkit-font-smoothing: antialiased;
         }
-        .bento-card {
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-        }
-        .bento-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08);
+        .soft-shadow {
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
         }
         .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        @keyframes subtle-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        .float-animation {
-            animation: subtle-float 6s ease-in-out infinite;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
         .cta-gradient {
             background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+        }
+        /* Fallback de carregamento para SEO e usuários sem JS */
+        #root:empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            text-align: center;
+        }
+        #root:empty::before {
+            content: 'Z';
+            width: 60px;
+            height: 60px;
+            background: #2563eb;
+            color: white;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 32px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
         }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
-  }
-}
-</script>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+      }
+    }
+    </script>
 </head>
 <body class="antialiased">
-    <div id="root"></div>
+    <!-- O id="root" será preenchido pelo React. 
+         Conteúdo básico para SEO e Fallback imediato: -->
+    <div id="root">
+        <div class="max-w-md mx-auto py-12 px-6">
+            <h1 class="text-3xl font-black mb-4">ZIFOLIO</h1>
+            <p class="text-slate-600 mb-8 font-medium">A carregar educação financeira simplificada...</p>
+            <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100 mb-8">
+                <ul class="text-left space-y-3 font-bold text-slate-700">
+                    <li>• Ganhar e poupar em Dólar</li>
+                    <li>• Cartões VISA em Angola</li>
+                    <li>• Cripto para Iniciantes</li>
+                </ul>
+            </div>
+            <noscript>
+                <div class="p-6 bg-red-50 text-red-800 rounded-2xl font-bold mb-6">
+                    Por favor, ativa o JavaScript para usares o Zifolio completo com o nosso Assistente IA.
+                </div>
+                <a href="https://chat.whatsapp.com/BVQl36gWjIoJj7xTtVkp5S" class="block w-full py-4 bg-emerald-500 text-white rounded-2xl font-black">
+                    Ir para o WhatsApp
+                </a>
+            </noscript>
+        </div>
+    </div>
+    
+    <script type="module" src="./index.tsx"></script>
 </body>
 </html>
