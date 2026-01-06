@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Problems } from './components/Problems';
 import { Solution } from './components/Solution';
+import { EarningsMap } from './components/EarningsMap';
 import { Platforms } from './components/Platforms';
 import { Steps } from './components/Steps';
 import { SpecialOffer } from './components/SpecialOffer';
@@ -29,6 +30,7 @@ const App = () => {
         <Hero />
         <Problems />
         <Solution />
+        <EarningsMap />
         <Platforms />
         <Steps />
         <SpecialOffer />

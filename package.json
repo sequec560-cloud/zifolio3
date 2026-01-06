@@ -1,14 +1,6 @@
-
 {
   "name": "zifolio",
   "version": "1.0.0",
   "private": true,
-  "description": "ZIFOLIO - Educação Financeira Simplificada para Angola",
-  "scripts": {
-    "dev": "wrangler pages dev .",
-    "deploy": "wrangler pages deploy ."
-  },
-  "devDependencies": {
-    "wrangler": "4.54.0"
-  }
+  "description": "ZIFOLIO - Educação Financeira Simplificada para Angola"
 }
